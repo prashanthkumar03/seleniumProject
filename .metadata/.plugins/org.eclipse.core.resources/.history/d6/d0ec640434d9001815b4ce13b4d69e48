@@ -1,0 +1,23 @@
+package com.ApplicationLaunch;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FireFoxBrowser_11street {
+
+	public static void main(String[] args) 
+	{
+		FirefoxDriver driver = new FirefoxDriver();
+		// driver.get("https://11street.my");
+		
+		driver.navigate().to("https://11street.my");
+		driver.manage().window().maximize();
+		String title=driver.getTitle();
+		String url=driver.getCurrentUrl();
+		System.out.println("11street title is: "+ title);
+		System.out.println("11street url is: "+ url);
+		
+		//driver.close();
+
+	}
+
+}

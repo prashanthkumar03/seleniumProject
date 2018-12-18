@@ -1,0 +1,106 @@
+package com.ApplicationLaunch;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FireFoxBrowser_11street {
+
+	public static void main(String[] args) 
+	{
+		FirefoxDriver driver = new FirefoxDriver();
+		// driver.get("https://11street.my");
+		
+		driver.navigate().to("https://11street.my");
+		driver.manage().window().maximize();
+		String title=driver.getTitle();
+		String url=driver.getCurrentUrl();
+		System.out.println("11street title is: "+ title);
+		System.out.println("11street url is: "+ url);
+		//<a class="header-utility-item" itemprop="url" title="Login to 11street" 
+		//href="https://www.11street.my/login.do?isSSL=Y&amp;returnURL=https%3A%2F%2Fwww.11street.my%2F">Login</a>
+		
+		driver.findElementByClassName("header-utility-item").click();
+		String expected_title="11street-Your Online Shopping Paradise";
+		System.out.println("Expected title should be : "+ expected_title);
+		
+		String actual_title=driver.getTitle();
+		System.out.println("Actual title should be : "+ actual_title);
+		
+		if(actual_title.equals(expected_title))
+		{
+			System.out.println("Title is correct: Passed");
+			
+		}
+		else
+		{
+			System.out.println("Title is wrong: Failed");
+		}
+		//Log in
+		driver.findElementByName("loginName").sendKeys("prashanthkumar03@gmail.com");
+		
+		driver.findElementById("passWord").sendKeys("275145kpk");
+		///html/body/section/form/main/section/article/div[1]/fieldset/div[2]/button
+		
+		driver.findElementByXPath("/html/body/section/form/main/section/article/div[1]/fieldset/div[2]/button").click();
+		
+		
+		String expected_url="https://www.11street.my/";
+		System.out.println("expected url is: "+ expected_url);
+		
+		String actual_url=driver.getCurrentUrl();
+		
+		System.out.println("Actual Url is: "+ actual_url);
+		
+		if(actual_url.equals(expected_url))
+		{
+			System.out.println("url is correct : Passed ");
+			
+		}
+		
+		else
+		{
+			System.out.println(" url is wrong: Failed");
+		}
+		
+		driver.findElementByClassName("header-utility-item").click();  //Log out
+		//search bar
+		/*driver.findElement(By.id("primary-search")).sendKeys("do not buy");
+		driver.findElementByXPath("/html/body/header/div[4]/div/div[1]/form/button").click(); //click on search
+		driver.findElementByXPath("/html/body/header/div[4]/div/div[2]/form/i").click(); //clear text*/
+		
+		//Links count and what are they
+		List<WebElement>Links = driver.findElements(By.tagName("a"));
+		
+		int LinksCount=Links.size();
+		System.out.println("Links Counts in home page is : " +LinksCount);
+		
+		String LinkName = Links.get(0).getText();
+		System.out.println(LinkName);
+		
+		
+		//Sign up
+		
+	/*	driver.findElementByLinkText("Sign Up").click(); //sign up button from home page
+		
+		 //member sign up
+		driver.findElementByXPath("/html/body/main/div/div[1]/a[2]").click();
+		
+		//create buyer account
+		
+		driver.findElement(By.id("memNM")).sendKeys("Testers street"); //Name
+		driver.findElement(By.id("memIDView")).sendKeys("testing4567656@gmail.com");//Email
+		driver.findElementByXPath("/html/body/main/div/form/fieldset/div[1]/div[4]/input").sendKeys("275145@kpk"); //Password
+		driver.findElementByXPath("/html/body/main/div/form/fieldset/div[1]/div[5]/input").sendKeys("275145@kpk"); //Confirm Password
+		driver.findElement(By.id("submit-signup")).click();
+		//Continue Shopping
+		//driver.findElementByLinkText("Continue Shopping").click();*/
+		
+		
+		//driver.close();
+
+	}
+
+}

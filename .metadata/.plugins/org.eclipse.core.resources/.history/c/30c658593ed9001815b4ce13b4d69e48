@@ -1,0 +1,26 @@
+package com.ApplicationLaunch;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FireFoxBrowser_11street {
+
+	public static void main(String[] args) 
+	{
+		FirefoxDriver driver = new FirefoxDriver();
+		// driver.get("https://11street.my");
+		
+		driver.navigate().to("https://11street.my");
+		driver.manage().window().maximize();
+		String title=driver.getTitle();
+		String url=driver.getCurrentUrl();
+		System.out.println("11street title is: "+ title);
+		System.out.println("11street url is: "+ url);
+		//<a class="header-utility-item" itemprop="url" title="Login to 11street" 
+		//href="https://www.11street.my/login.do?isSSL=Y&amp;returnURL=https%3A%2F%2Fwww.11street.my%2F">Login</a>
+		driver.findElementByClassName("header-utility-item").click();
+		
+		//driver.close();
+
+	}
+
+}

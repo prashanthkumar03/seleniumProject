@@ -1,0 +1,18 @@
+package com.ApplicationLaunch;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FireFoxBrowser_11street {
+
+	public static void main(String[] args) 
+	{
+		FirefoxDriver driver = new FirefoxDriver();
+		// driver.get("https://11street.my");
+		
+		driver.navigate().to("https://11street.my");
+		
+		driver.close();
+
+	}
+
+}
